@@ -1,0 +1,4 @@
+plugin.tx_fluidce.settings {
+	Tx_Fluidce_Domain_Model_Text = typo3conf/ext/moo3/Resources/Private/Templates/Text.html
+	Tx_Fluidce_Domain_Model_TextAndImage = typo3conf/ext/moo3/Resources/Private/Templates/TextAndImage.html
+}

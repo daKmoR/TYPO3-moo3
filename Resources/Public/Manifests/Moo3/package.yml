@@ -1,0 +1,21 @@
+name: "Moo3"
+exports: "mootools-moo3.js"
+web: "[mooforum.net](http://mooforum.net)"
+description: "MooTools CMS Capabilities for TYPO3"
+license: "[MIT License](http://mootools.net/license.txt)"
+copyright: "&copy; [mooforum](http://mooforum.net)"
+authors: "[Thomas Allmer](http://mooforum.net)"
+
+author: daKmoR
+category: Interface
+tags: [typo3, cms, interface]
+#docs: http://url.to.docs
+#demo: http://url.to.demo
+#current: 0.5
+
+sources:
+  - Source/CeControls.js
+  - Source/Behaviors/Behavior.Sync.js
+  - Source/Behaviors/Behavior.CeControls.js
+  - Source/Behaviors/Behavior.CeControls.Move.js
+  - Source/Delegators/Delegator.CeControls.js
