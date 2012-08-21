@@ -14,8 +14,9 @@ tags: [typo3, cms, interface]
 #current: 0.5
 
 sources:
-  - Source/CeControls.js
+  - Source/Controls.js
   - Source/Behaviors/Behavior.Sync.js
-  - Source/Behaviors/Behavior.CeControls.js
-  - Source/Behaviors/Behavior.CeControls.Move.js
-  - Source/Delegators/Delegator.CeControls.js
+  - Source/Behaviors/Behavior.Controls.js
+  - Source/Behaviors/Behavior.Content.Move.js
+  - Source/Behaviors/Behavior.Page.Move.js
+  - Source/Delegators/Delegator.Controls.js

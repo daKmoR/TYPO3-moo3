@@ -1,32 +1,32 @@
 {namespace m=Tx_MootoolsEssentials_ViewHelpers}
 <m:load file="Moo3/Behavior.Sync" />
-<m:load file="Stack/Behavior.Flexo" />
-<m:load file="Moo3/Delegator.CeControls" />
-<m:load file="Moo3/Behavior.CeControls" />
-<m:load file="Moo3/Behavior.CeControls.Move" />
+<m:load file="Flexo/Behavior.Flexo" />
+<m:load file="Moo3/Behavior.Controls" />
+<m:load file="Moo3/Behavior.Content.Move" />
+<m:load file="Moo3/Delegator.Controls" />
 
-<div class="ce ceText ceDroppable" id="ce{content.uid}" data-behavior="CeControls">
+<div class="content contentText contentDroppable" id="content{content.uid}" data-behavior="Controls">
 	<h2 class="name" data-behavior="Flexo">{content.name}</h2>
 	<div class="text" data-behavior="Flexo">
 		{content.text -> f:format.html()}
 	</div>
 
-	<div class="ceControls">
-		<a href="#" data-behavior="CeControls.Move" class="ceControlsMove"><i class="icon-move"></i></a>
-		<a href="#" data-trigger="CeControls.Delete" class="ceControlsDelete"><i class="icon-trash"></i></a>
+	<div class="contentControls">
+		<a href="#" data-behavior="Content.Move" class="ContentMove"><i class="icon-move"></i></a>
+		<a href="#" data-trigger="Controls.Delete" class="ControlsDelete"><i class="icon-trash"></i></a>
 	</div>
 
 	<div style="display: none;">
 		<f:form name="text" action="updateText" object="{content}">
-			<f:form.textfield property="name" additionalAttributes="{data-behavior: 'Sync', data-sync-from: '!body #ce{content.uid} .name'}" />
-			<f:form.textarea property="text" rows="3" cols="40" additionalAttributes="{data-behavior: 'Sync', data-sync-from: '!body #ce{content.uid} .text'}" />
+			<f:form.textfield property="name" additionalAttributes="{data-behavior: 'Sync', data-sync-from: '!body #content{content.uid} .name'}" />
+			<f:form.textarea property="text" rows="3" cols="40" additionalAttributes="{data-behavior: 'Sync', data-sync-from: '!body #content{content.uid} .text'}" />
 		</f:form>
 
-		<f:form name="text" action="deleteText" object="{content}" class="ceDeleteForm">
+		<f:form name="text" action="deleteText" object="{content}" class="deleteForm">
 			<button type="submit">delete</button>
 		</f:form>
 
-		<f:form name="contentUids" action="move" class="ceMoveForm">
+		<f:form name="contentUids" action="move" class="moveForm">
 			<f:form.textfield property="contentUid" value="{content.uid}" />
 			<f:form.textfield property="moveAfterUid" value="" />
 			<button type="submit">move</button>

@@ -1,7 +1,5 @@
-.ce { position: relative; }
-	.ceControlsActive { border: 1px solid red; }
-		.ceControls { display: none; position: absolute; right: 0; top: 0; }
-			.ceControlsActive .ceControls { display: block; }
-
-	.xceDroppable { display: none; height: 20px; background: orange; }
-		.xceDraging .xceDroppable { display: block; }
+.content, .page { position: relative; }
+	.controlsActive { border: 1px solid red; }
+		.contentControls, .pageControls { display: none; position: absolute; right: 0; top: 0; }
+			.controlsActive .contentControls { display: block; }
+			.controlsActive .pageControls { display: block; }
