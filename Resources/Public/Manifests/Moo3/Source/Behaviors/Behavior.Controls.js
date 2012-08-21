@@ -12,7 +12,12 @@ script: Behavior.Controls.js
 Behavior.addGlobalFilter('Controls', {
 
 	setup: function(element, api) {
-		var controls = new Controls(element);
+		var options = {};
+		if (api.getAs(Boolean, 'activate-text-editing') === false || api.getAs(Boolean, 'activate-text-editing') === true) {
+			options.setActivationOfTextediting = api.getAs(Boolean, 'activate-text-editing');
+		}
+
+		var controls = new Controls(element, options);
 //		element.addEvent('click', function() {
 //			if (this.ceControls.isActive()) {
 //				//this.ceControls.deactivate();

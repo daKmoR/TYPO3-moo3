@@ -10,10 +10,18 @@ name: Delegator.Controls
 
 (function(){
 
-	Delegator.register('click', 'Controls.Delete', {
+	Delegator.register('click', 'Content.Delete', {
 		handler: function(event, link, api) {
 			event.stop();
 			var deleteForm = link.getElement('!.content .deleteForm');
+			deleteForm.submit();
+		}
+	});
+
+	Delegator.register('click', 'Page.Delete', {
+		handler: function(event, link, api) {
+			event.stop();
+			var deleteForm = link.getElement('!.page .deleteForm');
 			deleteForm.submit();
 		}
 	});

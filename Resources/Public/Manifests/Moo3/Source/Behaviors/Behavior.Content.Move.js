@@ -18,7 +18,7 @@ Behavior.addGlobalFilter('Content.Move', {
     	event.stop();
 			content.removeClass('contentDroppable');
 
-			var reAddDroppable = content.getPrevious().hasClass('contentDroppable');
+			var reAddDroppable = content.getPrevious() ? content.getPrevious().hasClass('contentDroppable') : false;
 			if (reAddDroppable) {
 				content.getPrevious().removeClass('contentDroppable');
 			}

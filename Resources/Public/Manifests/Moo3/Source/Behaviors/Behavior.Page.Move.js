@@ -1,39 +1,39 @@
 /*
 ---
-name: Behavior.CeControls.Move
+name: Behavior.Page.Move
 description: allows to sync automatically
-provides: [Behavior.CeControls.Move]
+provides: [Behavior.Page.Move]
 requires: [Behavior/Behavior, Behavior/Element.Data, More/Object.Extras, Core/Fx.Morph, More/Drag.Move]
-script: Behavior.CeControls.Move.js
+script: Behavior.Page.Move.js
 
 ...
 */
 
-Behavior.addGlobalFilter('CeControls.Move', {
+Behavior.addGlobalFilter('Page.Move', {
 
 	setup: function(element, api) {
-		var ce = element.getElement('!.ce');
+		var page = element.getElement('!.page');
 
 		element.addEvent('mousedown', function(event) {
     	event.stop();
-			ce.removeClass('ceDroppable');
+			page.removeClass('pageDroppable');
 
-			var reAddDroppable = ce.getPrevious().hasClass('ceDroppable');
+			var reAddDroppable = page.getPrevious() ? page.getPrevious().hasClass('pageDroppable') : false;
 			if (reAddDroppable) {
-				ce.getPrevious().removeClass('ceDroppable');
+				page.getPrevious().removeClass('pageDroppable');
 			}
 
-			var clone = ce.clone().setStyles(ce.getCoordinates()).setStyles({
+			var clone = page.clone().setStyles(page.getCoordinates()).setStyles({
 				opacity: 0.7,
 				position: 'absolute'
 			}).inject(document.body);
 
 			var drag = new Drag.Move(clone, {
 				handle: element,
-				droppables: $$('.ceDroppable'),
+				droppables: $$('.pageDroppable'),
 				onEnter: function(dragging, dropArea) {
 					dragging.fade(0.01);
-					this.localClone = ce.clone();
+					this.localClone = page.clone();
 					this.localClone.setStyle('opacity', 0.7);
 					this.localClone.inject(dropArea, 'after');
 				},
@@ -42,22 +42,22 @@ Behavior.addGlobalFilter('CeControls.Move', {
 					this.localClone.destroy();
 				},
 				onDrop: function(dragged, dropArea) {
-					document.body.removeClass('ceDraging');
-					ce.addClass('ceDroppable');
+					document.body.removeClass('pageDraging');
+					page.addClass('pageDroppable');
 					if (reAddDroppable) {
-						ce.getPrevious().addClass('ceDroppable');
+						page.getPrevious().addClass('pageDroppable');
 					}
 
 					if (dropArea) {
 						this.localClone.destroy();
-						ce.setStyle('opacity', 1);
-						ce.inject(dropArea, 'after');
-						var form = ce.getElement('.ceMoveForm');
-						form.getElement('[name="tx_fluidce_content[contentUids][moveAfterUid]"]').set('value', dropArea.get('id').substr(2));
+						page.setStyle('opacity', 1);
+						page.inject(dropArea, 'after');
+						var form = page.getElement('.moveForm');
+						form.getElement('[name="tx_fluidce_content[pageUids][moveAfterUid]"]').set('value', dropArea.get('id').substr(4));
 						form.submit();
 						dragged.destroy();
 					} else {
-						ce.fade(1);
+						page.fade(1);
 						dragged.morph(this.startPosition).get('morph').chain(function() {
 							dragged.destroy();
 						});
@@ -66,8 +66,8 @@ Behavior.addGlobalFilter('CeControls.Move', {
 				},
 				onStart: function(dragged) {
 					this.startPosition = clone.getStyles('left', 'top');
-					ce.fade(0.1);
-					document.body.addClass('ceDraging');
+					page.fade(0.1);
+					document.body.addClass('pageDraging');
 				},
 				onCancel: function() {
 					console.log('fail');
