@@ -64,10 +64,15 @@ Behavior.addGlobalFilter('Page.Move', {
 					}
 					this.detach();
 				},
-				onStart: function(dragged) {
+				onStart: function(dragging) {
 					this.startPosition = clone.getStyles('left', 'top');
+					var originalWidth = dragging.getStyle('width').toInt();
+					dragging.addClass('dragged');
+					var offset = originalWidth - dragging.getSize().x;
+					this.startPosition.left = this.startPosition.left.toInt() - offset;
+					dragging.setStyle('margin-left', offset);
 					page.fade(0.1);
-					document.body.addClass('pageDraging');
+					document.body.addClass('contentDraging');
 				},
 				onCancel: function() {
 					console.log('fail');

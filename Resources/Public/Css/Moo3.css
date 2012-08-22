@@ -3,3 +3,9 @@
 		.contentControls, .pageControls { display: none; position: absolute; right: 0; top: 0; }
 			.controlsActive .contentControls { display: block; }
 			.controlsActive .pageControls { display: block; }
+
+#clipboard { background: #acacac; }
+	#clipboard > div { width: 200px; height: 80px; float: left; border: 1px solid #000; margin: 10px; overflow: hidden;}
+	#clipboard h4 { background: #4c4c4c; color: #fff; padding: 2px 6px; }
+
+.dragged { border: 2px solid orange !important; overflow: hidden; width: 200px !important; height: 80px !important; }

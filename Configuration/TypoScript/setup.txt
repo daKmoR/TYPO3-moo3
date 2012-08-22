@@ -2,3 +2,28 @@ plugin.tx_fluidce.settings {
 	Tx_Fluidce_Domain_Model_Text = typo3conf/ext/moo3/Resources/Private/Templates/Text.html
 	Tx_Fluidce_Domain_Model_TextAndImage = typo3conf/ext/moo3/Resources/Private/Templates/TextAndImage.html
 }
+
+plugin.tx_moo3 {
+	view {
+		templateRootPath = EXT:moo3/Resources/Private/Templates/
+		partialRootPath = EXT:moo3/Resources/Private/Partials/
+		layoutRootPath = EXT:moo3/Resources/Private/Layouts/
+	}
+	settings {
+		Tx_Fluidce_Domain_Model_Text = typo3conf/ext/moo3/Resources/Private/Templates/Header/Text.html
+		Tx_Fluidce_Domain_Model_TextAndImage = typo3conf/ext/moo3/Resources/Private/Templates/Header/TextAndImage.html
+	}
+	persistence {
+		updateReferenceIndex = 0
+		storagePid =
+	}
+}
+
+page.5 = USER
+page.5 {
+	userFunc = tx_extbase_core_bootstrap->run
+	extensionName = Moo3
+	pluginName = Header
+	controller = Header
+	action = list
+}

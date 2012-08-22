@@ -53,6 +53,7 @@ Behavior.addGlobalFilter('Content.Move', {
 						content.setStyle('opacity', 1);
 						content.inject(dropArea, 'after');
 						var form = content.getElement('.moveForm');
+						console.log(form);
 						form.getElement('[name="tx_fluidce_content[contentUids][moveAfterUid]"]').set('value', dropArea.get('id').substr(7));
 						form.submit();
 						dragged.destroy();
@@ -64,8 +65,13 @@ Behavior.addGlobalFilter('Content.Move', {
 					}
 					this.detach();
 				},
-				onStart: function(dragged) {
+				onStart: function(dragging) {
 					this.startPosition = clone.getStyles('left', 'top');
+					var originalWidth = dragging.getStyle('width').toInt();
+					dragging.addClass('dragged');
+					var offset = originalWidth - dragging.getSize().x;
+					this.startPosition.left = this.startPosition.left.toInt() - offset;
+					dragging.setStyle('margin-left', offset);
 					content.fade(0.1);
 					document.body.addClass('contentDraging');
 				},

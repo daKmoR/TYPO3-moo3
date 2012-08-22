@@ -1,0 +1,32 @@
+{namespace m=Tx_MootoolsEssentials_ViewHelpers}
+<m:load file="Flexo/Behavior.Flexo" />
+<m:load file="Moo3/Behavior.Sync" />
+<m:load file="Moo3/Behavior.Controls" />
+<m:load file="Moo3/Behavior.Content.Move" />
+<m:load file="Moo3/Behavior.Page.Move" />
+<m:load file="Moo3/Delegator.Controls" />
+
+<div class="content contentText contentDroppable" id="content{content.uid}" data-behavior="Controls">
+	<h4 class="name">{content.name}</h4>
+	<div class="text">
+		{content.text -> f:format.html()}
+	</div>
+
+	<div class="contentControls">
+		<a href="#" data-behavior="Content.Move" class="ContentMove"><i class="icon-move"></i></a>
+		<a href="#" data-trigger="Controls.Delete" class="ControlsDelete"><i class="icon-trash"></i></a>
+	</div>
+
+	<div style="display: none;">
+		<f:form name="text" action="deleteText" extensionName="fluidce" pluginName="Content" controller="Content" object="{content}" class="deleteForm">
+			<button type="submit">delete</button>
+		</f:form>
+
+		<f:form name="contentUids" action="move" extensionName="fluidce" pluginName="Content" controller="Content" class="moveForm">
+			<f:form.textfield property="contentUid" value="{content.uid}" />
+			<f:form.textfield property="moveAfterUid" value="" />
+			<button type="submit">move</button>
+		</f:form>
+	</div>
+
+</div>
