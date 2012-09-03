@@ -56,8 +56,9 @@ class Tx_Moo3_Controller_HeaderController extends Tx_Extbase_MVC_Controller_Acti
 
 		$contentsString = '<div id="clipboard" class="clearfix">';
 		foreach ($contents as $content) {
-			if ($this->settings[get_class($content)]) {
-				$templatePathAndFilename = $this->settings[get_class($content)];
+			$contentClass = get_class($content);
+			if ($this->settings[$contentClass]) {
+				$templatePathAndFilename = $this->settings[$contentClass];
 				$this->view->setTemplatePathAndFilename($templatePathAndFilename);
 				$this->view->assign('content', $content);
 				$contentsString .= $this->view->render();
@@ -65,7 +66,6 @@ class Tx_Moo3_Controller_HeaderController extends Tx_Extbase_MVC_Controller_Acti
 		}
 		$contentsString .= '</div>';
 		return $contentsString;
-
 	}
 
 }
